@@ -1,0 +1,1596 @@
+#{extends 'main.html'/}
+<style>
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    span,
+    p {
+        font-family: "Montserrat", sans-serif;
+    }
+
+    #supervisorheader {
+        background: url("/images/new_images/supervisorheader.svg") no-repeat;
+        height: 23.5vw;
+        max-height: 342px;
+        position: relative;
+        background-size: 100%;
+        margin: auto;
+        margin-top: 110px;
+        max-width: 1920px;
+    }
+
+    .headertext {
+        color: #FFF;
+        font-size: calc(52 * (100vw /1920));
+        font-style: normal;
+        font-weight: 700;
+        /* 121.053% */
+        position: absolute;
+        top: 65%;
+        left: 29%;
+    }
+
+    #bflineInfo {
+        max-width: 1920px;
+        margin: auto;
+        margin-top: 4%;
+        padding: 0 8.33%;
+        position: relative;
+        z-index: 3;
+        /* Увеличиваем z-index, чтобы секция была над белой картинкой */
+    }
+
+    #infoRow .row {
+        margin: auto;
+        padding: 0 0;
+        max-width: 1920px;
+    }
+
+    #infoRow .row>:not(:first-child) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 1%;
+        border: 0.5px solid transparent;
+        border-radius: 25px;
+        box-shadow: 0px 0px 7px 1px #D5E093;
+        font-size: calc(16px + 6 * ((100vw - 920px) / 680));
+        padding-right: 1%;
+        padding-left: 2%;
+        max-width: 285px;
+    }
+
+    #infoRow .row i {
+        color: gray;
+        font-size: calc(20px + 6 * ((100vw - 920px) / 680));
+        font-weight: 100;
+    }
+
+    #bflineInfo .row .col-sm h2 {
+        font-weight: 700;
+        font-size: calc(21.5px + 6 * ((100vw - 920px) / 680));
+        text-align: center;
+        padding: 15px 0;
+    }
+
+    section.text-center {
+        position: relative;
+        z-index: 1;
+    }
+
+    section.text-center::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 26%;
+        /* Высота, которую вы хотите перекрыть (нижняя половина) */
+        background-color: white;
+        /* Цвет фона, который будет перекрывать нижнюю часть фоновой картинки */
+        z-index: 2;
+    }
+
+    section.text-center .container-fluid.background-container {
+        position: relative;
+        z-index: 1;
+    }
+
+    section.text-center img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    section:not(.text-center) {
+        position: relative;
+        z-index: 3;
+        /* Увеличиваем z-index, чтобы контент других секций находился над псевдоэлементом */
+    }
+
+    .section-text-center h1 {
+        color: white;
+        font-weight: bold;
+        position: absolute;
+        top: 55%;
+        /* Измените значение top по вашему усмотрению */
+        left: 35%;
+        /* Измените значение left по вашему усмотрению */
+        transform: translate(-50%, -50%);
+        z-index: 1;
+        margin: 0;
+        line-height: 1.2;
+        /* Регулируем интервал между строками */
+        font-size: 60px;
+        /* Измените значение на желаемый размер шрифта */
+    }
+
+    .text1 {
+        font-size: calc(38 * (100vw / 1920));
+        color: black;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.7;
+    }
+
+    #text1 {
+        margin-bottom: 100px;
+        max-width: 1920px;
+        max-height: 774px;
+        width: 1189px;
+        height: 175px;
+        margin: auto;
+        margin-top: 50px;
+        position: relative;
+        z-index: 3;
+        /* Увеличиваем z-index, чтобы секция была над белой картинкой */
+    }
+
+    #text2 {
+        background: url("/public/images/new_images/text2.svg") no-repeat;
+        height: 20vw;
+        width: 100%;
+        max-height: 1118px;
+        max-width: 1920px;
+        position: relative;
+        margin-top: 15%;
+        margin-left: 18%;
+    }
+
+    .text2 {
+        color: white;
+        position: absolute;
+        line-height: 1.2;
+        font-size: calc(30 * (100vw / 1920));
+        top: 10%;
+        left: 5%;
+        width: 1000px;
+        height: 128px;
+        font-style: normal;
+        font-weight: 700;
+    }
+
+    #text3 {
+        height: 20vw;
+        max-height: 1706px;
+        max-width: 1920px;
+        margin-bottom: 20%;
+        margin-top: 5%;
+    }
+
+    #text3 .row {
+        max-width: 1920px;
+    }
+
+    .text3 {
+        color: black;
+        font-size: calc(24 * (100vw / 1440));
+        line-height: 1.7;
+        width: 936px;
+        height: 711px;
+        position: relative;
+        margin-left: 40%;
+    }
+
+    .kz {
+        position: relative;
+        top: 10px;
+        /* Adjust the top position according to your needs */
+        left: 140%;
+        /* Adjust the right position according to your needs */
+        max-width: 1920px;
+        width: 688px;
+        /* Set the desired width */
+        height: 688px;
+    }
+
+    #green {
+        background: url("/images/new_images/greenimg.svg") no-repeat;
+        position: relative;
+        height: 500vw;
+        max-width: 1920px;
+        max-height: 722px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 10%;
+    }
+
+    .greentext1 {
+        color: white;
+        position: absolute;
+        line-height: 1.2;
+        font-size: calc(32 * (100vw / 1920));
+        font-style: normal;
+        font-weight: 700;
+        top: 1%;
+        left: 15%;
+        width: 979px;
+        height: 128px;
+        text-align: center;
+    }
+
+    #green .col {
+        position: relative;
+        height: 294px;
+        width: 630px;
+        left: 25%;
+    }
+
+    #green .row {
+        position: relative;
+        width: 700px;
+        height: 94px;
+        padding: 10%;
+    }
+
+    .greentext2 {
+        color: #0C6D3C;
+        position: absolute;
+        right: 38%;
+        bottom: 1%;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 1.2;
+        font-size: calc(32 * (100vw / 1920));
+        width: 813px;
+        height: 94px;
+        margin: auto;
+    }
+
+    .greentext3 {
+        color: #0C6D3C;
+        position: absolute;
+        right: 35%;
+        top: 1%;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 1.2;
+        font-size: calc(32 * (100vw / 1920));
+        width: 813px;
+        height: 64px;
+    }
+
+    .greentext4 {
+        color: #0C6D3C;
+        position: absolute;
+        right: 35%;
+        top: 1%;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 1.2;
+        font-size: calc(32 * (100vw / 1920));
+        width: 813px;
+        height: 64px;
+    }
+
+    #yellow {
+        position: relative;
+        width: 100%;
+        height: 18vw;
+        max-width: 1920px;
+        max-height: 2725px;
+        background-color: #D5E093;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .yellowtext {
+        color: black;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 1.2;
+        font-size: calc(32 * (100vw / 1920));
+        text-align: center;
+        max-width: 1920px;
+        width: 1083px;
+        height: 128px;
+        margin: auto;
+        margin-bottom: 3%;
+    }
+
+    .attention {
+        color: black;
+        font-size: calc(48 * (100vw / 1920));
+        font-style: normal;
+        font-weight: 700;
+        position: relative;
+        margin-top: 3%;
+        margin-left: 5%;
+    }
+
+    .textcard1 {
+        background: url("/images/new_images/textcard1.svg") no-repeat;
+        width: 1440px;
+        height: 450px;
+        position: relative;
+        margin-top: 5%;
+    }
+
+    .textcard1main {
+        font-size: calc(19 * (100vw / 1920));
+        color: black;
+        font-style: normal;
+        font-weight: 400;
+        width: 1000px;
+        height: 100px;
+        line-height: 1.7;
+        position: relative;
+        left: 5%;
+        top: 1%;
+        bottom: 1%;
+    }
+
+    .green {
+        color: #15854F;
+        font-size: calc(24 * (100vw / 1920));
+        font-style: normal;
+        font-weight: 700;
+    }
+
+    .bold {
+        color: black;
+        font-size: calc(24 * (100vw / 1920));
+        font-style: normal;
+        font-weight: 700;
+    }
+
+    #imgTextCards {
+        max-width: 1500px;
+        margin: auto;
+        padding: 0 8.33%;
+    }
+
+    #imgTextCards .row {
+        margin: 5% 0;
+    }
+
+    .card-text {
+        color: black;
+        font-size: calc(2px + 18 * (100vw/1440));
+        margin: 0 20px;
+        font-style: normal;
+        font-weight: 400;
+    }
+
+    #containerform {
+        background-color: white;
+        padding: 80px;
+        border-radius: 30px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 686px;
+        height: 868px;
+        margin: auto;
+    }
+
+    #form {
+        background-color: #D5E093;
+        padding: 100px;
+    }
+
+    form {
+        max-width: 1500px;
+        /* Установите максимальную ширину формы */
+        width: 100%;
+    }
+
+    h2 {
+        font-size: calc(28 * (100vw / 1920));
+        /* Увеличьте размер заголовка формы */
+    }
+
+    .btn-primary {
+        background-color: #15854F;
+        border-color: #15854F;
+        border-radius: 20px;
+        font-size: calc(48 * (100vw / 1920));
+        font-style: normal;
+        font-weight: 700;
+        padding: 10px 40px;
+        align-items: center;
+        margin-top: 30px;
+        margin-left: 5%;
+    }
+
+    .btn-primary:hover {
+        background-color: #12683D;
+        border-color: #12683D;
+    }
+
+    #form select {
+        color: #535353;
+        width: 100%;
+        padding: 20px 15px;
+        height: 100%;
+        font-size: calc(32 * (100vw / 1920));
+        font-style: normal;
+        font-weight: 400;
+    }
+
+    #form label {
+        color: #535353;
+        font-size: calc(32 * (100vw / 1920));
+        font-style: normal;
+        font-weight: 400;
+        margin-top: 25px;
+    }
+
+    #form input::placeholder {
+        color: #535353;
+        background-color: #F0F0F0;
+        font-size: calc(32 * (100vw / 1920));
+        padding: 10px;
+    }
+
+    .form-control {
+        background-color: #F0F0F0;
+        border-radius: 30px;
+        width: 582px;
+        height: 82px;
+    }
+
+    #form h2 {
+        color: #0C6D3C;
+        font-size: calc(48 * (100vw / 1920));
+        font-style: normal;
+        font-weight: 700;
+        margin-bottom: 60px;
+        width: 571px;
+        height: 72px;
+        text-align: center;
+    }
+
+    #form input {
+        padding-left: 10px;
+        margin: auto;
+    }
+
+    @media (max-width: 1440.98px) {
+        #supervisorheader {
+            background: url("/images/new_images/supervisorheader.svg") no-repeat;
+            height: 23.5vw;
+            max-height: 342px;
+            position: relative;
+            background-size: 100%;
+            margin: auto;
+            margin-top: 110px;
+            max-width: 1500px;
+        }
+
+        .headertext {
+            color: #FFF;
+            font-size: calc(38 * (100vw /1440));
+            font-style: normal;
+            font-weight: 700;
+            /* 121.053% */
+            position: absolute;
+            top: 63%;
+            left: 23%;
+        }
+
+        #bflineInfo {
+            max-width: 1500px;
+            margin: auto;
+            margin-top: 4%;
+            padding: 0 8.33%;
+            position: relative;
+            z-index: 3;
+            /* Увеличиваем z-index, чтобы секция была над белой картинкой */
+        }
+
+        #infoRow .row {
+            margin: auto;
+            padding: 0 0;
+            max-width: 1500px;
+        }
+
+        #infoRow .row>:not(:first-child) {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 0 1%;
+            border: 0.5px solid transparent;
+            border-radius: 25px;
+            box-shadow: 0px 0px 7px 1px #D5E093;
+            font-size: calc(16px + 6 * ((100vw - 920px) / 680));
+            padding-right: 1%;
+            padding-left: 2%;
+            max-width: 285px;
+        }
+
+        #infoRow .row i {
+            color: gray;
+            font-size: calc(20px + 6 * ((100vw - 920px) / 680));
+            font-weight: 100;
+        }
+
+        #bflineInfo .row .col-sm h2 {
+            font-weight: 700;
+            font-size: calc(21.5px + 6 * ((100vw - 920px) / 680));
+            text-align: center;
+            padding: 15px 0;
+        }
+
+        section.text-center {
+            position: relative;
+            z-index: 1;
+        }
+
+        section.text-center::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 26%;
+            /* Высота, которую вы хотите перекрыть (нижняя половина) */
+            background-color: white;
+            /* Цвет фона, который будет перекрывать нижнюю часть фоновой картинки */
+            z-index: 2;
+        }
+
+        section.text-center .container-fluid.background-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        section.text-center img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        section:not(.text-center) {
+            position: relative;
+            z-index: 3;
+            /* Увеличиваем z-index, чтобы контент других секций находился над псевдоэлементом */
+        }
+
+        .section-text-center h1 {
+            color: white;
+            font-weight: bold;
+            position: absolute;
+            top: 55%;
+            /* Измените значение top по вашему усмотрению */
+            left: 35%;
+            /* Измените значение left по вашему усмотрению */
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            margin: 0;
+            line-height: 1.2;
+            /* Регулируем интервал между строками */
+            font-size: 60px;
+            /* Измените значение на желаемый размер шрифта */
+        }
+
+        .text1 {
+            font-size: calc(24 * (100vw / 1440));
+            color: black;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1.7;
+        }
+
+        #text1 {
+            margin-bottom: 100px;
+            max-width: 1500px;
+            max-height: 774px;
+            width: 1189px;
+            height: 175px;
+            margin: auto;
+            margin-top: 50px;
+            position: relative;
+            z-index: 3;
+            /* Увеличиваем z-index, чтобы секция была над белой картинкой */
+        }
+
+        #text2 {
+            background: url("/public/images/new_images/text2.svg") no-repeat;
+            height: 20vw;
+            max-height: 1118px;
+            max-width: 1500px;
+            position: relative;
+            margin-top: 3%;
+            margin-left: 12%;
+        }
+
+        .text2 {
+            color: white;
+            position: absolute;
+            line-height: 1.2;
+            font-size: calc(24 * (100vw / 1440));
+            top: 20%;
+            left: 15%;
+            width: 820px;
+            height: 128px;
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        #text3 {
+            height: 20vw;
+            max-height: 1706px;
+            max-width: 1500px;
+            margin-bottom: 20%;
+            margin-top: 5%;
+        }
+
+        .text3 {
+            color: black;
+            font-size: calc(24 * (100vw / 1440));
+            line-height: 1.7;
+            width: 655px;
+            height: 523px;
+            position: relative;
+            margin-left: 40%;
+        }
+
+        .kz {
+            position: relative;
+            top: 10px;
+            /* Adjust the top position according to your needs */
+            left: 500px;
+            /* Adjust the right position according to your needs */
+            max-width: 1500px;
+            width: 524px;
+            /* Set the desired width */
+            height: 524px;
+        }
+
+        #green {
+            background: url("/images/new_images/greenimg.svg") no-repeat;
+            position: relative;
+            width: 100%;
+            height: 50vw;
+            max-width: 1500px;
+            max-height: 2468px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .greentext1 {
+            color: white;
+            position: absolute;
+            line-height: 1.2;
+            font-size: calc(24 * (100vw / 1440));
+            font-style: normal;
+            font-weight: 700;
+            top: 10%;
+            left: 15%;
+            width: 979px;
+            height: 128px;
+            text-align: center;
+        }
+
+        #green .col {
+            position: relative;
+            height: 294px;
+            width: 630px;
+            left: 25%;
+        }
+
+        #green .row {
+            position: relative;
+            width: 528px;
+            height: 64px;
+            padding: 10%;
+        }
+
+        .greentext2 {
+            color: #0C6D3C;
+            position: absolute;
+            right: 20%;
+            top: 3%;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 1.2;
+            font-size: calc(24 * (100vw / 1440));
+            width: 528px;
+            height: 64px;
+            margin: auto;
+        }
+
+        .greentext3 {
+            color: #0C6D3C;
+            position: absolute;
+            right: 12%;
+            top: 3%;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 1.2;
+            font-size: calc(24 * (100vw / 1440));
+            width: 528px;
+            height: 64px;
+        }
+
+        .greentext4 {
+            color: #0C6D3C;
+            position: absolute;
+            right: 12%;
+            top: 3%;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 1.2;
+            font-size: calc(24 * (100vw / 1440));
+            width: 528px;
+            height: 64px;
+        }
+
+        #yellow {
+            position: relative;
+            width: 100%;
+            height: 18vw;
+            max-width: 1500px;
+            max-height: 2725px;
+            background-color: #D5E093;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .yellowtext {
+            color: black;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 1.2;
+            font-size: calc(24 * (100vw / 1440));
+            text-align: center;
+            max-width: 1500px;
+            width: 1083px;
+            height: 128px;
+            margin: auto;
+        }
+
+        .attention {
+            color: black;
+            font-size: calc(34 * (100vw / 1440));
+            font-style: normal;
+            font-weight: 700;
+            position: relative;
+            margin-top: 3%;
+            margin-left: 5%;
+        }
+
+        .textcard1 {
+            background: url("/images/new_images/textcard1.svg") no-repeat;
+            width: 1170px;
+            height: 402px;
+            position: relative;
+            margin-top: 5%;
+        }
+
+        .textcard1main {
+            font-size: calc(20 * (100vw / 1440));
+            color: black;
+            font-style: normal;
+            font-weight: 400;
+            width: 1093px;
+            height: 331px;
+            line-height: 1.7;
+            position: relative;
+            left: 5%;
+            top: 8%;
+            bottom: 1%;
+        }
+
+        .green {
+            color: #15854F;
+            font-size: calc(20 * (100vw / 1440));
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        .bold {
+            color: black;
+            font-size: calc(20 * (100vw / 1440));
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        #imgTextCards {
+            max-width: 1500px;
+            margin: auto;
+            padding: 0 8.33%;
+        }
+
+        #imgTextCards .row {
+            margin: 5% 0;
+        }
+
+        .card-text {
+            color: black;
+            font-size: calc(2px + 18 * (100vw/1440));
+            margin: 0 20px;
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        #containerform {
+            background-color: white;
+            padding: 80px;
+            border-radius: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 686px;
+            height: 868px;
+            margin: auto;
+        }
+
+        #form {
+            background-color: #D5E093;
+            padding: 100px;
+        }
+
+        form {
+            max-width: 1500px;
+            /* Установите максимальную ширину формы */
+            width: 100%;
+        }
+
+        h2 {
+            font-size: calc(24 * (100vw / 1440));
+            /* Увеличьте размер заголовка формы */
+        }
+
+        .btn-primary {
+            background-color: #15854F;
+            border-color: #15854F;
+            border-radius: 20px;
+            font-size: calc(34 * (100vw / 1440));
+            font-style: normal;
+            font-weight: 700;
+            padding: 10px 40px;
+            align-items: center;
+            margin-top: 30px;
+            margin-left: 15%;
+        }
+
+        .btn-primary:hover {
+            background-color: #12683D;
+            border-color: #12683D;
+        }
+
+        #form select {
+            color: #535353;
+            width: 100%;
+            padding: 20px 15px;
+            height: 100%;
+            font-size: calc(24 * (100vw / 1440));
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        #form label {
+            color: #535353;
+            font-size: calc(24 * (100vw / 1440));
+            font-style: normal;
+            font-weight: 400;
+            margin-top: 25px;
+        }
+
+        #form input::placeholder {
+            color: #535353;
+            background-color: #F0F0F0;
+            font-size: calc(24 * (100vw / 1440));
+            padding: 10px;
+        }
+
+        .form-control {
+            background-color: #F0F0F0;
+            border-radius: 30px;
+            width: 582px;
+            height: 82px;
+        }
+
+        #form h2 {
+            color: #0C6D3C;
+            font-size: calc(34 * (100vw / 1440));
+            font-style: normal;
+            font-weight: 700;
+            margin-bottom: 30px;
+            width: 571px;
+            height: 72px;
+            text-align: center;
+        }
+
+        #form input {
+            padding-left: 10px;
+            margin: auto;
+        }
+    }
+
+    @media only screen and (max-width: 575.95px) {
+        #imgTextCards .row:nth-child(2n) .col-sm:nth-child(2) {
+            order: -1 !important;
+        }
+
+        .card-text {
+            font-size: calc(2px + 14 * (100vw/414));
+            margin: 0;
+            margin-top: 5%;
+        }
+    }
+
+    @media (max-width: 414.98px) {
+        #supervisorheader {
+            background: url("/images/new_images/supervisorheaderlitle.svg") no-repeat;
+            height: 46vw;
+        }
+
+        .headertext {
+            font-size: calc(24 * (100vw / 414));
+            top: 50%;
+            left: 12%;
+            font-weight: 700;
+        }
+
+        #bflineInfo .row {
+            display: flex;
+            align-items: center;
+            width: 414px;
+        }
+
+        #bflineInfo .col-sm {
+            width: 100%;
+            margin-bottom: 1px;
+            text-align: left;
+        }
+
+        #bflineInfo .col-sm:first-child {
+            text-align: left;
+        }
+
+        #bflineInfo .col-sm:first-child h2 {
+            font-size: 16px;
+            max-width: 100px;
+            margin: auto;
+            left: -12%;
+            position: absolute;
+            /* Убираем отступ снизу */
+        }
+
+        #bflineInfo .col-sm:not(:first-child) {
+            text-align: right;
+            margin-left: 30%;
+            margin-top: 5%;
+            width: 218px;
+            height: 64px;
+            padding-top: 1%;
+            padding-top: 1%;
+            padding-right: 5%;
+            padding-left: 5%;
+        }
+
+        #bflineInfo .infoText {
+            text-align: left;
+            font-size: 16px;
+        }
+
+        #bflineInfo i {
+            margin-top: 45px;
+            margin-bottom: 45px;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+
+        .text1 {
+            font-size: calc(14 * (100vw / 414));
+            color: black;
+            line-height: 1.7;
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        #text1 {
+            max-width: 1500px;
+            max-height: 100%;
+            width: 374px;
+            height: 187px;
+            margin-top: 50px;
+            position: relative;
+            z-index: 3;
+            /* Увеличиваем z-index, чтобы секция была над белой картинкой */
+        }
+
+        #text2 {
+            background: url("/public/images/new_images/text2litle.svg") no-repeat;
+            height: 50vw;
+            max-width: 414px;
+            max-height: 971px;
+            position: relative;
+            margin-top: 5%;
+            margin-left: 12%;
+        }
+
+        .text2 {
+            color: white;
+            position: absolute;
+            line-height: 1.2;
+            font-size: calc(14 * (100vw / 414));
+            top: 15%;
+            left: 10%;
+            width: 324px;
+            height: 132px;
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        #text3 {
+            height: 20vw;
+            max-height: 1688px;
+            max-width: 1500px;
+            margin-bottom: 150%;
+            margin-top: 5%;
+        }
+
+        .text3 {
+            color: black;
+            font-size: calc(14 * (100vw / 414));
+            line-height: 1.7;
+            width: 374px;
+            height: 335px;
+            position: relative;
+            margin: auto;
+        }
+
+        .text3img {
+            padding: 0 0;
+        }
+
+        .containertext3 {
+            padding: 0 0;
+        }
+
+        .kz {
+            position: relative;
+            max-width: 1500px;
+            width: 360px;
+            height: 360px;
+            left: 10%;
+        }
+
+        #green {
+            background: url("/images/new_images/greenimglitle.svg") no-repeat;
+            position: relative;
+            height: 170vw;
+            max-width: 414px;
+            max-height: 2271px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .greentext1 {
+            color: white;
+            position: absolute;
+            line-height: 1.2;
+            font-size: calc(16 * (100vw / 414));
+            font-style: normal;
+            font-weight: 700;
+            top: 10%;
+            left: 4%;
+            width: 374px;
+            height: 154px;
+            text-align: center;
+        }
+
+        #green .col {
+            position: absolute;
+            height: 500px;
+            width: 414px;
+            left: 0%;
+            top: 25%
+        }
+
+        #green .row {
+            position: relative;
+            width: 374px;
+            height: 66px;
+            padding: 10%;
+        }
+
+        .greentext2 {
+            color: #0C6D3C;
+            position: absolute;
+            left: 2%;
+            bottom: 100%;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 1.2;
+            font-size: calc(14 * (100vw / 414));
+            width: 243px;
+            height: 34px;
+            margin: auto;
+        }
+
+        .greentext3 {
+            color: #0C6D3C;
+            position: absolute;
+            left: 5%;
+            top: 3%;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 1.2;
+            font-size: calc(14 * (100vw / 414));
+            width: 243px;
+            height: 34px;
+        }
+
+        .greentext4 {
+            color: #0C6D3C;
+            position: absolute;
+            left: 5%;
+            top: 3%;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 1.2;
+            font-size: calc(14 * (100vw / 414));
+            width: 243px;
+            height: 34px;
+        }
+
+        #yellow {
+            position: relative;
+            width: 100%;
+            height: 61vw;
+            max-width: 414px;
+            max-height: 2522px;
+            background-color: #D5E093;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .yellowtext {
+            color: black;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 1.2;
+            font-size: calc(16 * (100vw / 414));
+            text-align: center;
+            max-width: 1500px;
+            width: 374px;
+            height: 176px;
+            margin: auto;
+        }
+
+        .attention {
+            color: black;
+            font-size: calc(20 * (100vw / 414));
+            font-style: normal;
+            font-weight: 700;
+            position: relative;
+            margin-top: 3%;
+            margin-left: 5%;
+        }
+
+        .textcard1 {
+            background: url("/images/new_images/textcard1litle.svg") no-repeat;
+            width: 374px;
+            height: 921px;
+            position: relative;
+            margin-top: 5%;
+            right: 15%;
+        }
+
+        .textcard1main {
+            font-size: calc(16 * (100vw / 414));
+            color: black;
+            font-style: normal;
+            font-weight: 400;
+            width: 328px;
+            height: 767px;
+            line-height: 1.7;
+            position: relative;
+            left: 5%;
+            top: 8%;
+            bottom: 1%;
+        }
+
+        .green {
+            color: #15854F;
+            font-size: calc(16 * (100vw / 414));
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        .bold {
+            color: black;
+            font-size: calc(16 * (100vw / 414));
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        #imgTextCards {
+            width: 414px;
+            max-height: 6073px;
+            height: 1000vw;
+            margin: auto;
+            padding: 0 8.33%;
+        }
+
+        #imgTextCards .row {
+            margin: 5% 0;
+        }
+
+        .card-text {
+            color: black;
+            font-size: calc(16 * (100vw / 414));
+            margin: 0 20px;
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        .img-fluid {
+            width: 374px;
+            height: 253px;
+        }
+
+        #containerform.container.mt-5 {
+            background-color: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 374px;
+            height: 531px;
+            margin: auto;
+            position: relative;
+            right: 40%;
+            bottom: 20%;
+        }
+
+        #form {
+            background-color: #D5E093;
+            max-width: 414px;
+            max-height: 6732px;
+            width: 414px;
+            height: 652px;
+        }
+
+        form {
+            max-width: 414px;
+            /* Установите максимальную ширину формы */
+            width: 100%;
+        }
+
+        h2 {
+            font-size: calc(20 * (100vw / 414));
+            font-style: normal;
+            font-weight: 700;
+            max-width: 313px;
+            max-height: 58px;
+        }
+
+        #form h2 {
+            color: #0C6D3C;
+            font-size: calc(20 * (100vw / 414));
+            font-style: normal;
+            font-weight: 700;
+            margin-bottom: 30px;
+            width: 313px;
+            height: 58px;
+            text-align: center;
+
+        }
+
+        .btn-primary {
+            background-color: #15854F;
+            border-color: #15854F;
+            border-radius: 20px;
+            font-size: calc(20 * (100vw / 414));
+            font-style: normal;
+            font-weight: 700;
+            padding: 1px 1px;
+            align-items: center;
+            margin-top: 10px;
+            margin-left: 10%;
+            width: 274px;
+            height: 65px;
+        }
+
+        .btn-primary:hover {
+            background-color: #12683D;
+            border-color: #12683D;
+        }
+
+        #form select {
+            color: #535353;
+            padding: 0px 15px;
+            font-size: calc(16 * (100vw / 414));
+            font-style: normal;
+            font-weight: 400;
+            width: 319px;
+            height: 49px;
+        }
+
+        #form label {
+            color: #535353;
+            font-size: calc(14 * (100vw / 414));
+            font-style: normal;
+            font-weight: 400;
+            margin-top: 5px;
+            width: 242px;
+            height: 42px;
+        }
+
+        #form input::placeholder {
+            color: #535353;
+            background-color: #F0F0F0;
+            font-size: calc(16 * (100vw / 414));
+            padding: 10px;
+        }
+
+
+        .form-control {
+            background-color: #F0F0F0;
+            border-radius: 30px;
+            padding: 20px 1px;
+            max-width: 319px;
+            max-height: 49px;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        #form input {
+            padding-left: 10px;
+            margin: auto;
+            max-width: 319px;
+            max-height: 49px;
+        }
+    }
+</style>
+
+<section id="supervisorheader">
+    <div class="container-fluid">
+        <h1 class="headertext">Руководителям<br>и специалистам</h1>
+    </div>
+</section>
+
+
+<section id="bflineInfo">
+    <div class="container-fluid" id="infoRow">
+        <div class="row">
+            <div class="col-sm">
+                <h2 class="mb-0 bfinfotext">Сопутствующая Информация</h2>
+            </div>
+            <div class="col-sm">
+                <div class="infoText">О Фонде</div>
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </div>
+            <div class="col-sm">
+                <div class="infoText">Что мы делаем</div>
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </div>
+            <div class="col-sm">
+                <div class="infoText">Мониторинговая система</div>
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="text1">
+    <div class="container-fluid">
+        <p class="text1">Сейчас как никогда важно вкладывать средства во внедрение программ по развитию психического
+            здоровья обучающейся молодежи. Результатом будет способность образовательной системы не только сохранять, но
+            и укреплять психическое здоровье подростков, а системы здравоохранения своевременно оказывать им
+            качественную квалифицированную помощь.</p>
+    </div>
+</section>
+
+<section id="text2">
+    <div class="container-fluid">
+        <p class="text2">Если вы ищете программы для сохранения и укрепления психического здоровья и заинтересованы в
+            предотвращении самоубийств подростков на территории области, есть много возможностей и профилактических мер
+        </p>
+    </div>
+</section>
+
+<section id="text3">
+    <div class="row">
+        <div class="col-sm-3 containertext3">
+            <p class="text3">Может быть сложно понять, какие из них полезны, безопасны и дадут ощутимый результат,
+                поэтому
+                мы сотрудничаем с международными организациями такими как PAPYRUS Prevention of Young Suicide
+                Великобритания, Представительством Детского фонда ООН в Казахстане (ЮНИСЕФ). Проводим апробацию,
+                экспертизу
+                и рецензирование в Республиканском научно-практическом центре психического здоровья Министерства
+                здравоохранения РК, в Национальной академии образования им. И.Алтынсарина Министерства образования и
+                науки
+                РК. С ведущими вузами страны организуем научные исследования, чтобы помочь вам решить, какие из проектов
+                лучше и наиболее надежны.</p>
+        </div>
+        <div class="col-sm-3 text3img">
+            <img src="/public/images/new_images/kz.svg" alt="kz" class="kz">
+        </div>
+    </div>
+</section>
+
+<section id="green">
+    <div class="container-fluid">
+        <div class="container">
+            <p class="greentext1">
+                Вот несколько проектов, которыми вы можете помочь изменить текущее положение дел, в зависимости от того,
+                где
+                вы находитесь, сколько подростков в области и как долго, по вашему мнению, вы можете оставаться
+                вовлеченными
+                в проекте:
+            </p>
+            <div class="col"> <!-- Wrap the row elements in a new div with class "col" -->
+                <p class="row greentext2">
+                    Превенция суицида среди несовершенолетних
+                </p>
+                <p class="row greentext3">
+                    Служба психологической поддержки BFLine
+                </p>
+                <p class="row greentext4">
+                    Развитие жизненных навыков
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="yellow">
+    <div class="container-fluid">
+        <p class="yellowtext">
+            Каждый из проектов включает в себя несколько способов внедрения и вы исходя из местных условий можете
+            выбрать один из наиболее подходящих на ваш взгляд вариантов реализации. Также имеется возможность внедрять в
+            области сразу несколько проектов либо частично самостоятельными модулями.
+        </p>
+    </div>
+</section>
+
+<section id="imgTextCards">
+    <div class="container-fluid">
+        <div class="row">
+            <h1 class="attention">
+                Важно знать!
+            </h1>
+        </div>
+        <div class="row textcard1">
+            <p class="textcard1main">
+                Внедрение указанных проектов играет важнейшую роль в успешной реализации государственной политики в
+                масштабе области благодаря продемонстрированной реалистичности, а также кратко- и долгосрочной
+                эффективности в соответствии с
+                <span class="bold">Государственной программой развития образования и науки Республики
+                    Казахстан на 2020 - 2025 годы,</span> утвержденной постановлением Правительства Республики Казахстан
+                от
+                27
+                декабря 2019 года № 988, в части касающейся <span class="green">читать...</span>
+                <br>
+                <br>
+                Эти проекты содействуют реализации мероприятий, в рамках <span class="bold">Дорожной карты по усилению
+                    защиты
+                    прав ребенка,
+                    противодействию бытовому насилию и решению вопросов суицидальности среди подростков на 2020 – 2023
+                    годы,
+                </span>
+                утвержденной Постановлением Правительства Республики Казахстан от 30 марта 2020 года № 156, в части
+                касающейся <span class="green">читать...</span>
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <img src="/images/new_images/textcard2.svg" class="img-fluid" alt="Responsive image">
+            </div>
+            <div class="col-sm  card-text ">
+                Внедрение и реализация предлагаемых проектов для подростков в сельских районах, позволяет руководству и
+                специалистам области относительно быстро реализовывать политику и задачи <span
+                    class="bold">ГПРОН</span>, приобретать полезный
+                опыт более действенной и полной их оценки, а также, знания, полученные в итоге показательного внедрения
+                инновационных подходов к организации деятельности психологической службы и воспитательному процессу в
+                образовательной сфере.
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm card-text order-1">
+                Делая акцент на укрепление и развитие психического здоровья, вместе мы закладываем <span
+                    class="bold">фундамент</span> развития у
+                молодежи важнейших духовно-нравственных и социальных ценностей.
+                Такой подход способствует привлечению сторонников из числа психологов дворовых клубов, молодёжных
+                методических центров и других общественных организаций по использованию рекомендуемых проектов для детей
+                подросткового возраста.
+            </div>
+            <div class="col-sm order-2">
+                <img src="/images/new_images/textcard3.svg" class="img-fluid" alt="Responsive image">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm">
+                <img src="/images/new_images/textcard4.svg" class="img-fluid" alt="Responsive image">
+            </div>
+            <div class="col-sm card-text ">
+                Важно подчеркнуть, что ни один проект, ни один план, как бы хорошо они ни были продуманы и составлены,
+                не будут иметь шанса на успех без соответствующей поддержки руководством области в сфере образования и
+                здравоохранения. <span class="bold">Постоянное стимулирование</span> приверженности и вовлеченности
+                психологов, педагогов, врачей
+                на повышение своей компетентности, заинтересованности в успешном достижении подростками жизненных целей,
+                необходимо для обеспечения реализации государственной политики.
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm card-text ">
+                Безусловно важно учитывать тот факт, что обычно детям и подросткам приходится полагаться на <span
+                    class="bold">помощь</span>
+                взрослых людей в деле отстаивания своих интересов и прав. Поэтому сегодня жизнеспособность наших
+                устремлений и конкретных действий по поддержанию психического здоровья подростков зависит от вашей
+                политической воли и должного обеспечения информированности и мотивации лиц, занимающихся этой
+                деятельностью.
+            </div>
+            <div class="col-sm ">
+                <img src="/images/new_images/textcard5.svg" class="img-fluid" alt="Responsive image">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section id="form">
+    <div class="container mt-5" id="containerform">
+        <form>
+            <h2>Получить информацию о сотрудничестве</h2>
+
+            <div class="form-group">
+                <input type="email" class="form-control" id="email" placeholder="Ваш email" required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" id="name" placeholder="Ваше имя" required>
+            </div>
+
+            <div class="form-group">
+                <input type="tel" class="form-control" id="phone" placeholder="Ваш телефон" required>
+            </div>
+
+            <div class="form-group">
+                <label>Какой проект вас заинтересовал</label>
+                <select class="form-control" id="projectSelect">
+                    <option>Превенция суицида среди несовершеннолетних</option>
+                    <option>Служба психологической поддержки BFLine</option>
+                    <option>Развитие жизненных навыков</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Отправить заявку</button>
+        </form>
+    </div>
+</section>
